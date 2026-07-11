@@ -1,6 +1,6 @@
 # 14. Longest Common Prefix
 
-`Easy` • `String` • `Arrays`
+> 🟢 Easy &nbsp;&nbsp; • `String` • `Arrays`
 
 ---
 
