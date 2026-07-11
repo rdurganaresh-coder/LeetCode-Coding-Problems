@@ -72,7 +72,7 @@ class Solution {
     }
 ```
 
-## Java 8 Approach 1: Java 8 IntStream In-Place Filter
+## Java 8 Approach 2: Java 8 IntStream In-Place Filter
 ```
  public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
@@ -90,7 +90,7 @@ class Solution {
     }
 ```
 
-## Java 8 Approach 1: The Highly-Optimized Hybrid Approach (Best LeetCode Score)
+## Java 8 Approach 3: The Highly-Optimized Hybrid Approach (Best LeetCode Score)
 ```
 public int removeDuplicates(int[] nums) {
         // Java 8 Objects validation check
