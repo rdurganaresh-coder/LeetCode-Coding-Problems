@@ -71,11 +71,11 @@ class Solution {
 > Use a HashMap. Store previously visited numbers. For each number, check whether `target -      currentNumber` already exists.
 
 ## Algorithm
-> Create HashMap.
-> Iterate array.
-> Calculate complement.
-> If complement exists return answer.
-> Otherwise store current value.
+* Create HashMap.
+* Iterate array.
+* Calculate complement.
+* If complement exists return answer.
+* Otherwise store current value.
 
 ```java
 public int[] twoSum(int[] nums, int target) {
@@ -105,12 +105,7 @@ public int[] twoSum(int[] nums, int target) {
 | Space Complexity | O(n) |
 
 #### Why HashMap Works
-> HashMap lookup is approximately
-```
-O(1)
-```
-> Therefore,instead of checking every element,
-> we only perform one lookup per iteration.
+> HashMap lookup is approximately `O(1)` Therefore,instead of checking every element, we only perform one lookup per iteration.
 ---
 
 # Java 8 Approach1 (The Pure Java 8 Streams Solution)
