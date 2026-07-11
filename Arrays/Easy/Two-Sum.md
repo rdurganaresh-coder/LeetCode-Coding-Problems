@@ -407,7 +407,7 @@ public int[] twoSum(int[] nums, int target) {
     }
 ```
 
-## Java 8 Approach 3 (The Functional Collector Solution)
+## Java 8 Approach 4 (The Functional Collector Solution)
 ```
 public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
