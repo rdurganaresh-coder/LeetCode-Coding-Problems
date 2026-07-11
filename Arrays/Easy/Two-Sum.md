@@ -132,8 +132,6 @@ Can you come up with an algorithm that is **better than O(n²)**?
 
 ## Solution
 
-# Understanding the Problem
-
 ## What is the question asking?
 
 Explain the problem in simple English.
@@ -369,6 +367,27 @@ instead of checking every element,
 we only perform one lookup per iteration.
 
 ---
+
+# Java 8 Approach
+
+```
+public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        return IntStream.range(0, nums.length)
+                .filter(i -> {
+                    int complement = target - nums[i];
+                    if (map.containsKey(complement)) {
+                        return true;
+                    }
+                    map.put(nums[i], i);
+                    return false;
+                })
+                .mapToObj(i -> new int[] { map.get(target - nums[i]), i })
+                .findFirst()
+                .orElse(new int[] {});
+    }
+```
 
 # Edge Cases
 
