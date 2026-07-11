@@ -410,6 +410,28 @@ public int[] twoSum(int[] nums, int target) {
 ## Java 8 Approach 3 (The Functional Collector Solution)
 ```
 public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        Optional<int[]> result = IntStream.range(0, nums.length)
+                .mapToObj(i -> {
+                    int complement = target - nums[i];
+                    if (map.containsKey(complement)) {
+                        return new int[] { map.get(complement), i };
+                    }
+                    // Java 8: Safely computes and caches value if key is missing
+                    map.computeIfAbsent(nums[i], key -> i);
+                    return null;
+                })
+                .filter(array -> array != null)
+                .findFirst();
+
+        return result.orElse(new int[] {});
+    }
+```
+
+## Java 8 Approach 3 (Hybrid Stream)
+```
+public int[] twoSum(int[] nums, int target) {
         // Step 1: Collect indices into a Map using Java 8 Collectors
         Map<Integer, Integer> map = IntStream.range(0, nums.length)
                 .boxed()
