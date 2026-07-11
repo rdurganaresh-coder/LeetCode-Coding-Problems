@@ -368,7 +368,7 @@ we only perform one lookup per iteration.
 
 ---
 
-# Java 8 Approach
+# Java 8 Approach1
 
 ```
 public int[] twoSum(int[] nums, int target) {
@@ -385,6 +385,26 @@ public int[] twoSum(int[] nums, int target) {
                 })
                 .mapToObj(i -> new int[] { map.get(target - nums[i]), i })
                 .findFirst()
+                .orElse(new int[] {});
+    }
+```
+
+## Java 8 Approach 2
+```
+public int[] twoSum(int[] nums, int target) {
+        // ConcurrentHashMap prevents race conditions during parallel processing
+        ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
+
+        return IntStream.range(0, nums.length)
+                .parallel() 
+                .filter(i -> {
+                    int complement = target - nums[i];
+                    // computeIfAbsent acts as an atomic check-and-insert operation
+                    Integer foundIdx = map.putIfAbsent(nums[i], i);
+                    return map.containsKey(complement) && (foundIdx == null || map.get(complement) != i);
+                })
+                .mapToObj(i -> new int[] { map.get(target - nums[i]), i })
+                .findAny() // findAny is faster than findFirst in parallel streams
                 .orElse(new int[] {});
     }
 ```
