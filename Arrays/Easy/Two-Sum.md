@@ -169,9 +169,7 @@ We need to find two numbers whose sum equals the target and return their indices
 
 # Brute Force Approach
 
-## Idea
-
-Check every pair.
+> **Idea:** Check every pair.
 
 ---
 
