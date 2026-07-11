@@ -68,14 +68,7 @@ class Solution {
 ---
 
 # Optimal Approach:
-> Use a HashMap.
-> Store previously visited numbers.
-> For each number,
->check whether
-```
-target-currentNumber
-```
-> already exists.
+> Use a HashMap. Store previously visited numbers. For each number, check whether `target -      currentNumber` already exists.
 
 ## Algorithm
 > Create HashMap.
