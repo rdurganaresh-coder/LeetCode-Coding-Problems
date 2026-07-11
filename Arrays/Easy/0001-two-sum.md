@@ -1,6 +1,6 @@
 # 1. Two Sum
 
-`Easy` • `Array` • `Hash Table`
+> 🟢 Easy &nbsp;&nbsp; 🏷️ Arrays &nbsp;&nbsp;
 
 ---
 
@@ -150,7 +150,7 @@ public int[] twoSum(int[] nums, int target) {
     }
 ```
 
-## Java 8 Approach 4 (The Functional Collector Solution)
+## Java 8 Approach 3 (The Functional Collector Solution)
 ```
 public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -172,7 +172,7 @@ public int[] twoSum(int[] nums, int target) {
     }
 ```
 
-## Java 8 Approach 3 (Hybrid Stream)
+## Java 8 Approach 4 (Hybrid Stream)
 ```
 public int[] twoSum(int[] nums, int target) {
         // Step 1: Collect indices into a Map using Java 8 Collectors
