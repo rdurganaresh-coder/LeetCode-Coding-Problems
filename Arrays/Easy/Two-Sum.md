@@ -366,7 +366,7 @@ we only perform one lookup per iteration.
 
 ---
 
-# Java 8 Approach1
+# Java 8 Approach1 (The Pure Java 8 Streams Solution)
 
 ```
 public int[] twoSum(int[] nums, int target) {
@@ -387,7 +387,7 @@ public int[] twoSum(int[] nums, int target) {
     }
 ```
 
-## Java 8 Approach 2
+## Java 8 Approach 2 (The Parallel Stream Solution (Fast for Massive Datasets))
 ```
 public int[] twoSum(int[] nums, int target) {
         // ConcurrentHashMap prevents race conditions during parallel processing
@@ -403,6 +403,27 @@ public int[] twoSum(int[] nums, int target) {
                 })
                 .mapToObj(i -> new int[] { map.get(target - nums[i]), i })
                 .findAny() // findAny is faster than findFirst in parallel streams
+                .orElse(new int[] {});
+    }
+```
+
+## Java 8 Approach 3 (The Functional Collector Solution)
+```
+public int[] twoSum(int[] nums, int target) {
+        // Step 1: Collect indices into a Map using Java 8 Collectors
+        Map<Integer, Integer> map = IntStream.range(0, nums.length)
+                .boxed()
+                .collect(Collectors.toMap(
+                    i -> nums[i], 
+                    Function.identity(), 
+                    (existing, replacement) -> replacement // Keep the latest index for duplicates
+                ));
+
+        // Step 2: Use an Optional pipeline to find the matching pair
+        return IntStream.range(0, nums.length)
+                .filter(i -> map.containsKey(target - nums[i]) && map.get(target - nums[i]) != i)
+                .mapToObj(i -> new int[] { i, map.get(target - nums[i]) })
+                .findFirst()
                 .orElse(new int[] {});
     }
 ```
