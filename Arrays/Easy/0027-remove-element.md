@@ -36,9 +36,6 @@ Consider the number of elements which are not equal to `val` be `k`, to get acce
 ## Two-Pointer Technique
 
 ```java
-import java.util.Objects;
-
-class Solution {
     public int removeElement(int[] nums, int val) {
         Objects.requireNonNull(nums, "Input array cannot be null");
         
@@ -54,14 +51,13 @@ class Solution {
         
         return writeIdx;
     }
-}
 ```
 
 ## Java8 Approach 1: 
 
 > Clean Functional Stream Solution. You can use the Java 8 Streams API to filter out elements matching val and write the filtered sequence back into the original array container.
 
-```
+```java
     public int removeElement(int[] nums, int val) {
         if (nums == null || nums.length == 0) return 0;
 
@@ -82,8 +78,7 @@ class Solution {
 
 ## Java8 Approach 2: Java 8 IntStream Counter & Mutation
 > This approach uses IntStream to dynamically rewrite array positions on-the-fly while using an atomic integer counter to track the size.
-
-    ```
+```java
     public int removeElement(int[] nums, int val) {
         if (nums == null || nums.length == 0) return 0;
 
@@ -96,11 +91,11 @@ class Solution {
 
         return writeIdx.get();
     }
-    ```
-
+```
 ## Java8 Approach 3: The Optimized Hybrid Approach (Best Performance)
 >This pairs safe Java 8 argument handling validation with the highly performant iterative two-pointer pattern. This method yields a 0ms processing time score on LeetCode.
-```
+
+```java
     public int removeElement(int[] nums, int val) {
         // Java 8: Strong null pointer protection check
         Objects.requireNonNull(nums, "Input array cannot be null");

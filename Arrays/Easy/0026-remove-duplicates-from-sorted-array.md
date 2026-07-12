@@ -56,7 +56,7 @@ Consider the number of unique elements of `nums` to be `k`, to get accepted, you
 ```
 
 ## Java 8 Approach 1: Clean Functional Stream Solution (One-Liner Variant)
-```
+```java
   public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
 
@@ -71,7 +71,7 @@ Consider the number of unique elements of `nums` to be `k`, to get accepted, you
 ```
 
 ## Java 8 Approach 2: Java 8 IntStream In-Place Filter
-```
+```java
  public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
 
@@ -89,7 +89,7 @@ Consider the number of unique elements of `nums` to be `k`, to get accepted, you
 ```
 
 ## Java 8 Approach 3: The Highly-Optimized Hybrid Approach (Best LeetCode Score)
-```
+```java
 public int removeDuplicates(int[] nums) {
         // Java 8 Objects validation check
         Objects.requireNonNull(nums, "Input array cannot be null");
