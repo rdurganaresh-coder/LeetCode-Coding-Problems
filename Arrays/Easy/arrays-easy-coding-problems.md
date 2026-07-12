@@ -4,6 +4,7 @@
 * [1. Two Sum](0001-two-sum.md)
 * [2. Longest Common Prefix](0014-longest-common-prefix.md)
 * [3. Remove Duplicates From Sorted Array](0026-remove-duplicates-from-sorted-array.md)
+* [3. Remove Element](0027-remove-element.md)
 
 
 

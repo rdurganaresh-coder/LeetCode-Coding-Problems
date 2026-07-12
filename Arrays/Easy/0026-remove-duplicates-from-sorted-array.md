@@ -36,7 +36,6 @@ Consider the number of unique elements of `nums` to be `k`, to get accepted, you
 ## Two-Pointer Technique 
 
 ```java
-class Solution {
     public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
         
@@ -54,12 +53,11 @@ class Solution {
         // Total count of unique elements is index + 1
         return uniqueIdx + 1;
     }
-}
 ```
 
 ## Java 8 Approach 1: Clean Functional Stream Solution (One-Liner Variant)
 ```
- public int removeDuplicates(int[] nums) {
+  public int removeDuplicates(int[] nums) {
         if (nums == null || nums.length == 0) return 0;
 
         // Java 8: Filters down to distinct elements and writes them back sequentially
