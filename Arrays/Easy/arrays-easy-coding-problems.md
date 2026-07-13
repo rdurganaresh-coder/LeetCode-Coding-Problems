@@ -7,6 +7,7 @@
 * [4. Remove Element](0027-remove-element.md)
 * [5. Search Insert Position](0035.-search-insert-position.md)
 * [6. Plus One](0066-plus-one.md)
+* [7. Merge Sorted Array](0088-merge-sorted-array.md)
 
 
 
