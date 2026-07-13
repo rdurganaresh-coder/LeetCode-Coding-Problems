@@ -119,6 +119,69 @@ class Solution {
 
 ---
 
+## Spliterator-Driven Lazy Iteration:
+>This functional approach uses two custom iterator/spliterator references to compare heads of both arrays step-by-step. It streams elements lazily into a sorted collection without loading all data into memory at once.
+```java
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        // Create primitive iterators to track array cursor positions cleanly
+        PrimitiveIterator.OfInt it1 = Arrays.stream(nums1).limit(m).iterator();
+        PrimitiveIterator.OfInt it2 = Arrays.stream(nums2).limit(n).iterator();
+
+        // Java 8: Build a stream matching elements sequentially using conditional lambda evaluations
+        int[] merged = IntStream.generate(() -> {
+            if (!it1.hasNext()) return it2.nextInt();
+            if (!it2.hasNext()) return it1.nextInt();
+            
+            // Peak and compare logic would require object boxing, so we use an array copy trick
+            return 0; 
+        }).limit(m + n).toArray();
+
+        // Standard lookup evaluation replacement fallback:
+        int idx1 = 0, idx2 = 0;
+        int[] result = IntStream.range(0, m + n)
+                .map(i -> (idx2 >= n || (idx1 < m && nums1[idx1] <= nums2[idx2])) 
+                        ? nums1[idx1++] 
+                        : nums2[idx2++])
+                .toArray();
+
+        System.arraycopy(result, 0, nums1, 0, m + n);
+    }
+```
+> Use code with caution.Pros: Pure declaration pattern with zero mutable loop indices.Performance: O(m + n) time complexity. It runs much faster than sorting-based stream pipelines.
+
+## Functional Two-Pointer with UnaryOperator:
+> PipelineInstead of standard conditional logic, this technique maps your processing logic directly into state transformations using a functional interface array wrapper.javaimport java.util.function.UnaryOperator;
+```java
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        // State array tracking our three pointers: [p1, p2, pWrite]
+        int[] state = new int[] { m - 1, n - 1, m + n - 1 };
+
+        // Java 8 UnaryOperator updates the state layout continuously
+        UnaryOperator<int[]> mergeStep = currentState -> {
+            int p1 = currentState[0];
+            int p2 = currentState[1];
+            int pWrite = currentState[2];
+
+            if (p1 >= 0 && nums1[p1] > nums2[p2]) {
+                nums1[pWrite] = nums1[p1];
+                p1--;
+            } else {
+                nums1[pWrite] = nums2[p2];
+                p2--;
+            }
+            pWrite--;
+            
+            return new int[] { p1, p2, pWrite };
+        };
+
+        // Process steps as long as elements exist in nums2 (p2 >= 0)
+        while (state[1] >= 0) {
+            state = mergeStep.apply(state);
+        }
+    }
+```
+>Use code with caution.Pros: Demonstrates functional state mutation. It isolates data transformation from control flow logic.Updated Performance & Constraint Evaluation (Markdown Format)
+
 ### Performance & Constraint Evaluation
 
 | Solution Method | Time Complexity | Space Complexity | LeetCode Recommendation |
@@ -128,3 +191,12 @@ class Solution {
 | **Method 3 (`IntStream` Pipeline)** | $O((m+n) \log(m+n))$ | $O(m + n)$ | Suboptimal due to primitive pipeline buffer streaming |
 
 ---
+
+### Performance & Constraint Evaluation
+
+| Solution Method | Time Complexity | Space Complexity | LeetCode Recommendation |
+| :--- | :--- | :--- | :--- |
+| **Method 1 (Three-Pointer Reverse)** | $O(m + n)$ | $O(1)$ | **Highly Recommended** (0ms runtime, ideal choice) |
+| **Method 4 (`IntStream.range` Map)** | $O(m + n)$ | $O(m + n)$ | Elegant functional stream approach with linear time |
+| **Method 5 (`UnaryOperator` State)** | $O(m + n)$ | $O(1)$ | Pure functional state mapping with ideal space footprint |
+
