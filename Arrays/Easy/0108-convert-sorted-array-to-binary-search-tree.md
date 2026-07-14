@@ -1,6 +1,5 @@
 # 108. Convert Sorted Array to Binary Search Tree
 
-`Easy` • `Array` • `Divide and Conquer` • `Tree` • `Binary Search Tree`
 > 🟢 Easy &nbsp;&nbsp; 🏷️ Arrays &nbsp;&nbsp;  🏷️ Divide and Conquer &nbsp;&nbsp; 🏷️ Tree &nbsp;&nbsp; 🏷️ Binary Search Tree &nbsp;&nbsp;
 
 ---

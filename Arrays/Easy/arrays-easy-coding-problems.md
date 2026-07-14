@@ -8,7 +8,7 @@
 * [5. Search Insert Position](0035.-search-insert-position.md)
 * [6. Plus One](0066-plus-one.md)
 * [7. Merge Sorted Array](0088-merge-sorted-array.md)
-* [7. Convert Sorted Array to Binary Search Tree](0108-convert-sorted-array-to-binary-search-tree.md)
-
+* [8. Convert Sorted Array to Binary Search Tree](0108-convert-sorted-array-to-binary-search-tree.md)
+*[9. Pascal's Triangle](0118-pascal's-triangle.md)
 
 
