@@ -16,4 +16,6 @@
 * [13. Single NumberII](0137-SINGLE-NUMBER_II.md)
 * [14. Read N Characters Given Read4](0157-READ-N-CHARACTERS-GIVEN-READ4.md)
 * [15. Missing Ranges](0163-MISSING-RANGES.md)
+* [16. Majority Element](0169-MAJORITY-ELEMENT.md)
+* [17. Two Sum III - Data structure design](0170-TWO-SUM-III-DATA-STRUCTURE-DESIGN.md)
 
